@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/style.css">
         <link rel="shortcut icon" href="/images/favicon-32x32.png" type="image/x-icon">
+        <script src="https://kit.fontawesome.com/17c47c1f0f.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <header>
@@ -37,11 +38,14 @@
         </section>
         <section class="stats">
             <div class="shorten">
-                <input type="text" placeholder="Shorten a link here...">
-                <button>Shorten It!</button>
+                <input type="text" id="input-link" placeholder="Shorten a link here...">
+                <button id="shorten-btn">Shorten It!</button>
+            </div>
+            <div class="short-link-results">
+                
             </div>
             <h2>Advanced Statistics</h2>
-            <p>Track how your links are performing across the web with our 
+            <p class="stats-brief">Track how your links are performing across the web with our 
                 advanced statistics dashboard.</p>
             <div class="stat-cards">
                 <div class="card">
