@@ -57,6 +57,9 @@ button {
     color: white;
     cursor: pointer;
 }
+button:hover {
+    filter: saturate(1.9);
+}
 header, section, footer {
     padding: 1.5em 4em;
 }
@@ -80,6 +83,9 @@ nav ul {
 }
 nav li {
     margin: 0em 0.75em;
+}
+nav a:hover {
+    color: var(--darkBlue);
 }
 #navToggle {
     display: none;
@@ -112,6 +118,7 @@ section.stats {
     display: flex;
     align-items: center;
     margin-top: -6em;
+    position: relative;
 }
 .shorten input {
     font-size: 1.5rem;
@@ -120,42 +127,58 @@ section.stats {
     width: 85%;
     border: none;
 }
+.shorten input.error {
+    border: 2px solid var(--red);
+}
 .shorten button {
     border-radius: 0.5em;
     margin-left: 1em;
 }
+#error {
+    color: var(--red);
+    font-style: italic;
+    font-size: 0.75rem;
+    position: absolute;
+    bottom: 2em;
+    opacity: 0;
+    transition: all 1s ease;
+}
+#error.show {
+    opacity: 1;
+}
 .short-link-results {
     margin-top: 1em;
-    background-color: white;
-    border-radius: 1em;
     padding: 0.5em;
     opacity: 0;
     transition: all 0.25s ease;
 }
 .link-field {
-    border: 2px solid var(--cyan);
-    border-radius: 0.2em;
-    padding: 1em;
+    background-color: white;
+    border-radius: 0.5em;
+    padding: 0.75em;
     margin: 0.25em 0em 0.5em;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    cursor: pointer;
+    margin-bottom: 1em;
 }
 .link-field p {
-    width: fit-content;
+    width: 40%;
+    color: var(--darkBlue) !important;
     text-decoration: underline;
 }
-.link-field svg {
-    width: 20px;
-    height: auto;
-    cursor: pointer;
+.link-field div.result a {
     color: var(--cyan);
+    text-decoration: underline;
 }
-.link-field span {
-    color: var(--cyan);
-    text-decoration: none !important;
+.link-field div.result button {
+    cursor: pointer;
+    margin-left: 1em;
+    border-radius: 0.5em;
+}
+.link-field div.result button.copied {
+    background-color: var(--darkBlue);
 }
 .stats h2 {
     margin-top: 4em;
@@ -345,12 +368,16 @@ footer a:hover {
         font-size: 1rem;
         padding: 0.2em 0em;
         width: 100%;
-        margin-bottom: 0.5em;
+        margin-bottom: 2em;
     }
     .shorten input::placeholder {
         font-size: 1rem;
         text-align: center;
         opacity: 0.2;
+    }
+    #error {
+        bottom: 5.7em;
+        left: 2em;
     }
     .shorten button {
         border-radius: 0.5em;
@@ -360,6 +387,28 @@ footer a:hover {
     }
     .link-field {
         flex-direction: column;
+        padding: 0.5em;
+    }
+    .link-field p {
+        width: 100%;
+        text-align: center;
+        overflow: auto;
+        margin-bottom: 0.2em;
+    }
+    .link-field div.result {
+        display: flex;
+        flex-direction: column;
+        padding-top: 1em;
+        border-top: 1px solid var(--grey);
+        width: 100%;
+        text-align: center;
+    }
+    .link-field div.result * {
+        width: 100%;
+    }
+    .link-field button {
+        margin-left: 0 !important;
+        margin-top: 0.5em;
     }
     .stats h2 {
         margin-top: 3em;
